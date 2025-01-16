@@ -1,0 +1,21 @@
+# Web scraping
+playwright>=1.41.0
+html5lib>=1.1
+
+# Search engine
+duckduckgo-search>=4.1.1
+
+# LLM integration
+openai>=1.12.0
+anthropic>=0.42.0
+python-dotenv>=1.0.0
+
+# Testing
+unittest2>=1.1.0
+
+# Google Generative AI
+google-generativeai
+
+# gRPC, for Google Generative AI preventing WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+# 1.69.0 This version is suitable for mac
+grpcio==1.69.0
