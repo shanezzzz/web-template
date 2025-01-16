@@ -1,9 +1,9 @@
 # Instructions
 
 Start each of your responses with: Yes, sir.
-请你再每次回答我需求前都先复述一遍我的需求，让我确认你理解了我的需求。然后我给你指令你才进行操作
+Please repeat my needs each time before you answer my needs, so that I can confirm that you understand my needs. Then I give you instructions and you do it
 
-需要下载第三方依赖包时，请使用pnpm install 包名
+To download third-party dependency packages, use the `pnpm install package name` command.
 
 During you interaction with the user, if you find anything reusable in this project (e.g. version of a library, model name), especially about a fix to a mistake you made or a correction you received, you should take note in the `Lessons` section in the `.cursorrules` file so you will not make the same mistake again. 
 

@@ -4,6 +4,18 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 This is a pre-configured template for new projects. Follow the steps below to get started:
 
+# Features
+
+- tailwindcss
+- axios
+- zustand
+- eslint
+- prettier
+- less
+- PWA
+- CI/CD
+- SEO
+
 ## Getting Started
 
 First, run the development server:

@@ -1,0 +1,53 @@
+name: CD
+
+on:
+  push:
+    tags: ['v*']
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Add your deployment steps here
+      # Example for deploying to a cloud platform:
+      - name: Deploy to Cloud Platform
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          DEPLOY_URL: ${{ secrets.DEPLOY_URL }}
+        run: |
+          # Add your deployment commands here
+          echo "Deploying to production..."
+
+          # Example deployment steps:
+          # 1. Install cloud platform CLI
+          # 2. Authenticate with cloud platform
+          # 3. Pull latest image
+          # 4. Deploy new version
+          # 5. Run migrations if needed
+          # 6. Health check
+
+      - name: Notify Deployment Status
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { job, conclusion } = context;
+            const status = conclusion === 'success' ? '✅' : '❌';
+            const message = `Deployment ${conclusion}: ${status}`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: message
+            });

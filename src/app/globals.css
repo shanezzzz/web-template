@@ -2,20 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Mobile-first styles */
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    @apply antialiased text-base leading-normal;
+    touch-action: manipulation;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .mobile-container {
+    @apply px-4 mx-auto max-w-screen-xl;
+  }
+
+  .mobile-section {
+    @apply py-6 sm:py-8;
+  }
+
+  .mobile-heading {
+    @apply text-2xl font-bold tracking-tight;
+  }
+
+  .mobile-text {
+    @apply text-base leading-relaxed;
+  }
+
+  .mobile-button {
+    @apply w-full sm:w-auto px-6 py-3 rounded-lg font-medium transition-colors
+    focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95;
+  }
+
+  .mobile-input {
+    @apply w-full px-4 py-2 rounded-lg border border-gray-300
+    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  }
+
+  .mobile-card {
+    @apply p-4 rounded-lg bg-white shadow-sm;
+  }
+}
+
+/* Disable pull-to-refresh on mobile */
+@media screen and (max-width: 768px) {
+  html,
+  body {
+    overscroll-behavior-y: none;
+  }
+}
+
+/* Hide scrollbar on mobile while preserving functionality */
+@media screen and (max-width: 768px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  * {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Prevent text selection on mobile */
+@media screen and (max-width: 768px) {
+  .no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 }
